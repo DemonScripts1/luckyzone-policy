@@ -1,105 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Terms of Service</title>
+<div>
+<h2>Terms of Service</h2>
 
-<style>
-:root {
-    --bg: #f8fafc;
-    --card: white;
-    --text: #0f172a;
-}
+<p><b>Effective Date:</b> April 2026</p>
 
-body {
-    margin: 0;
-    font-family: Arial;
-    background: var(--bg);
-    color: var(--text);
-}
+<h3>1. Acceptance of Terms</h3>
+<p>
+By downloading, installing, or using Lucky Zone, you agree to be bound by these Terms of Service.
+If you do not agree, you must not use the application.
+</p>
 
-.header {
-    padding: 40px;
-    text-align: center;
-    background: linear-gradient(90deg, #1e3a8a, #2563eb);
-    color: white;
-}
+<h3>2. Description of Service</h3>
+<p>
+Lucky Zone is a digital application that provides user access through authentication and web-based features.
+The service may be updated, modified, or discontinued at any time without prior notice.
+</p>
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
+<h3>3. User Accounts</h3>
+<p>
+To use certain features, you may be required to create an account using your phone number.
+You are responsible for maintaining the confidentiality of your account and all activities under it.
+</p>
 
-.card {
-    background: white;
-    margin: 20px 0;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+<h3>4. Acceptable Use</h3>
+<p>
+You agree not to:
+</p>
+<ul>
+<li>Use the app for any illegal or unauthorized purpose</li>
+<li>Attempt to hack, modify, or reverse engineer the application</li>
+<li>Disrupt or interfere with app functionality or servers</li>
+<li>Use automated systems (bots, scripts) to access the service</li>
+</ul>
 
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.6s;
-}
+<h3>5. Prohibited Activities</h3>
+<p>
+Any misuse of the application, including fraudulent activity, abuse of services, or violation of applicable laws, may result in permanent suspension or termination of your account.
+</p>
 
-.card.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
-</head>
+<h3>6. Intellectual Property</h3>
+<p>
+All content, branding, design, and functionality within Lucky Zone are owned by the developers of the application.
+You may not copy, distribute, or reuse any part of the app without permission.
+</p>
 
-<body>
+<h3>7. Service Availability</h3>
+<p>
+We do not guarantee uninterrupted or error-free operation of the application.
+Temporary downtime may occur due to maintenance, updates, or technical issues.
+</p>
 
-<div class="header">
-<h1>Terms of Service</h1>
-<p>By using Lucky Zone you agree to these terms</p>
+<h3>8. Limitation of Liability</h3>
+<p>
+Lucky Zone and its developers shall not be held responsible for any direct or indirect damages arising from the use or inability to use the application.
+</p>
+
+<h3>9. Termination</h3>
+<p>
+We reserve the right to suspend or terminate access to the app at any time, without notice, if users violate these Terms.
+</p>
+
+<h3>10. Changes to Terms</h3>
+<p>
+These Terms may be updated periodically. Continued use of the app means acceptance of the updated terms.
+</p>
+
+<h3>11. Contact Information</h3>
+<p>
+For questions regarding these Terms, contact:<br>
+<b>txdevelopers@gmail.com</b>
+</p>
 </div>
-
-<div class="container">
-
-<div class="card">
-<h2>Usage Rules</h2>
-<p>Use the app responsibly and legally.</p>
-</div>
-
-<div class="card">
-<h2>Accounts</h2>
-<p>You are responsible for your account security.</p>
-</div>
-
-<div class="card">
-<h2>Restrictions</h2>
-<p>Misuse of the app may result in termination.</p>
-</div>
-
-<div class="card">
-<h2>Changes</h2>
-<p>We may update terms anytime.</p>
-</div>
-
-<div class="card">
-<h2>Contact</h2>
-<p>txdevelopers@gmail.com</p>
-</div>
-
-</div>
-
-<script>
-const cards = document.querySelectorAll(".card");
-
-function animate() {
-    cards.forEach(c => {
-        if(c.getBoundingClientRect().top < window.innerHeight - 100) {
-            c.classList.add("show");
-        }
-    });
-}
-
-window.addEventListener("scroll", animate);
-animate();
-</script>
-
-</body>
-</html>
