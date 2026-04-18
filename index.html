@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lucky Zone Policies</title>
 
 <style>
@@ -27,9 +29,14 @@ body {
     background: var(--bg);
     color: var(--text);
     transition: 0.3s;
+    animation: pageLoad 0.6s ease;
 }
 
-/* Header */
+@keyframes pageLoad {
+    from {opacity: 0; transform: scale(0.98);}
+    to {opacity: 1; transform: scale(1);}
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -40,26 +47,15 @@ body {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     font-weight: bold;
 }
 
-.logo img {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-}
-
-/* Container */
 .container {
     max-width: 600px;
     margin: 80px auto;
     text-align: center;
 }
 
-/* Cards */
 .card {
     background: var(--card);
     padding: 25px;
@@ -68,7 +64,9 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease;
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    line-height: 1.7;
+    font-size: 14.5px;
 }
 
 .card.show {
@@ -76,7 +74,6 @@ body {
     transform: translateY(0);
 }
 
-/* Buttons */
 a {
     display: block;
     margin: 10px 0;
@@ -89,10 +86,10 @@ a {
 }
 
 a:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-/* Toggle */
 .toggle {
     cursor: pointer;
     padding: 8px 12px;
@@ -107,19 +104,19 @@ a:hover {
 <body>
 
 <div class="header">
-    <div class="logo">
-        <img src="https://via.placeholder.com/40" alt="logo">
-        Lucky Zone
-    </div>
-
+    <div class="logo">Lucky Zone</div>
     <button class="toggle" onclick="toggleMode()">Dark Mode</button>
 </div>
 
 <div class="container">
 
     <div class="card">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">
+            Official Legal Center
+        </div>
+
         <h2>Legal Documents</h2>
-        <p style="color: var(--muted);">Official policies for Lucky Zone app</p>
+        <p style="color: var(--muted);">Privacy Policy and Terms of Service</p>
 
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
@@ -128,24 +125,15 @@ a:hover {
 </div>
 
 <script>
-// Dark mode
 function toggleMode() {
     document.body.classList.toggle("dark");
-    localStorage.setItem("mode", document.body.classList.contains("dark") ? "dark" : "light");
 }
 
-// Load mode
-if(localStorage.getItem("mode") === "dark") {
-    document.body.classList.add("dark");
-}
-
-// Scroll animation
 const cards = document.querySelectorAll(".card");
 
 function showCards() {
     cards.forEach(c => {
-        const top = c.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100) {
+        if(c.getBoundingClientRect().top < window.innerHeight - 100) {
             c.classList.add("show");
         }
     });
