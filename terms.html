@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Terms of Service</title>
 
 <style>
@@ -16,6 +18,12 @@ body {
     font-family: Arial;
     background: var(--bg);
     color: var(--text);
+    animation: pageLoad 0.6s ease;
+}
+
+@keyframes pageLoad {
+    from {opacity: 0; transform: scale(0.98);}
+    to {opacity: 1; transform: scale(1);}
 }
 
 .header {
@@ -37,10 +45,11 @@ body {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-
     opacity: 0;
     transform: translateY(30px);
     transition: 0.6s;
+    line-height: 1.7;
+    font-size: 14.5px;
 }
 
 .card.show {
@@ -71,7 +80,7 @@ body {
 
 <div class="card">
 <h2>Restrictions</h2>
-<p>Misuse of the app may result in termination.</p>
+<p>Misuse may result in termination.</p>
 </div>
 
 <div class="card">
