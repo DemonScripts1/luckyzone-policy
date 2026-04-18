@@ -5,77 +5,155 @@
 <title>Lucky Zone Policies</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0f172a, #1e3a8a);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        overflow: hidden;
-    }
+:root {
+    --bg: #f8fafc;
+    --card: white;
+    --text: #0f172a;
+    --muted: #64748b;
+    --primary: #2563eb;
+}
 
-    .container {
-        text-align: center;
-        background: rgba(255,255,255,0.08);
-        padding: 50px 40px;
-        border-radius: 18px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        animation: fadeIn 1s ease-in-out;
-    }
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --primary: #3b82f6;
+}
 
-    h1 {
-        font-size: 34px;
-        margin-bottom: 10px;
-        animation: slideDown 1s ease;
-    }
+body {
+    margin: 0;
+    font-family: Arial;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
 
-    p {
-        color: #cbd5e1;
-        margin-bottom: 25px;
-        font-size: 14px;
-    }
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: var(--card);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
 
-    a {
-        display: block;
-        text-decoration: none;
-        padding: 14px;
-        margin: 12px 0;
-        border-radius: 10px;
-        font-weight: bold;
-        background: linear-gradient(90deg, #3b82f6, #2563eb);
-        color: white;
-        transition: 0.3s;
-        transform: scale(1);
-    }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
 
-    a:hover {
-        transform: scale(1.05);
-        background: linear-gradient(90deg, #2563eb, #1d4ed8);
-    }
+.logo img {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 80px auto;
+    text-align: center;
+}
 
-    @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+/* Cards */
+.card {
+    background: var(--card);
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Buttons */
+a {
+    display: block;
+    margin: 10px 0;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+a:hover {
+    transform: scale(1.05);
+}
+
+/* Toggle */
+.toggle {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    border: none;
+}
 </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Lucky Zone</h1>
-        <p>Official Privacy & Legal Policies</p>
+
+<div class="header">
+    <div class="logo">
+        <img src="https://via.placeholder.com/40" alt="logo">
+        Lucky Zone
+    </div>
+
+    <button class="toggle" onclick="toggleMode()">Dark Mode</button>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Legal Documents</h2>
+        <p style="color: var(--muted);">Official policies for Lucky Zone app</p>
 
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
     </div>
+
+</div>
+
+<script>
+// Dark mode
+function toggleMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("mode", document.body.classList.contains("dark") ? "dark" : "light");
+}
+
+// Load mode
+if(localStorage.getItem("mode") === "dark") {
+    document.body.classList.add("dark");
+}
+
+// Scroll animation
+const cards = document.querySelectorAll(".card");
+
+function showCards() {
+    cards.forEach(c => {
+        const top = c.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100) {
+            c.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", showCards);
+showCards();
+</script>
+
 </body>
 </html>
